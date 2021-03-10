@@ -3,7 +3,7 @@
     <div class="login-title">
       Log in with EdgeKit
     </div>
-    <form @submit.prevent="login">
+    <form id="form" @submit.prevent="login">
       <div class="login-input-wrap">
         <input
             v-model.trim="email"

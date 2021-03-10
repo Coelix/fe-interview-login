@@ -2,7 +2,7 @@ export default {
     actions:{
         async login({commit},{email,password}) {
             // simple code for test
-            if(email === 'test@email.com' && password === 'test123'){
+            if(email === 'test@email.com' && password === 'test1234'){
                 localStorage.user = email
             } else {
                 commit('setError', 'Some text with error')

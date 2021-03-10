@@ -16,11 +16,11 @@ const router = new VueRouter()
 describe('Login form', () => {
   let store
   let actions
-
+  const loginMock = jest.fn(() => Promise.resolve());
 
   beforeEach(() => {
     actions = {
-      login: jest.fn(),
+      login: loginMock,
       logout: jest.fn()
     }
     store = new Vuex.Store({
@@ -90,23 +90,21 @@ describe('Login form', () => {
 
   })
 
-  test('active button with input data', () => {
+  test('submit data to login user', () => {
     const wrapper = shallowMount(Login, {
       store,
       localVue,
       router
     })
+    const form = wrapper.find('#form')
     const email = wrapper.find('#email')
     email.element.value = 'test@email.com'
     email.trigger("input");
     const password = wrapper.find('#password')
-    password.element.value = '408350943543';
+    password.element.value = 'test1234';
     password.trigger("input");
-    wrapper.vm.$forceUpdate();
-
-    const button = wrapper.find('.login-button')
-    console.log(wrapper.vm.$data.email)
-    expect(button.classes()).not.toContain('inactive')
+    form.trigger('submit.prevent')
+    expect(loginMock).toHaveBeenCalled()
 
   })
 });
