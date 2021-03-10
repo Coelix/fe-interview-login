@@ -40,6 +40,9 @@ export default {
       color: $clr-typo-titles;
       text-decoration: none;
       cursor: pointer;
+      &:hover{
+        color: $clr-primary-blue;
+      }
     }
   }
 }

@@ -144,6 +144,12 @@ export default {
     &.inactive{
       background-color: $clr-primary-disabled;
       pointer-events: none;
+      &:hover{
+        background: $clr-primary-disabled;
+      }
+    }
+    &:hover{
+      background: $clr-primary-blue;
     }
   }
   &-error {

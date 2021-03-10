@@ -96,13 +96,16 @@ describe('Login form', () => {
       localVue,
       router
     })
-
-    wrapper.setData({
-      email: "test@email.com",
-      password: "3827364763822"
-    });
+    const email = wrapper.find('#email')
+    email.element.value = 'test@email.com'
+    email.trigger("input");
+    const password = wrapper.find('#password')
+    password.element.value = '408350943543';
+    password.trigger("input");
     wrapper.vm.$forceUpdate();
+
     const button = wrapper.find('.login-button')
+    console.log(wrapper.vm.$data.email)
     expect(button.classes()).not.toContain('inactive')
 
   })
